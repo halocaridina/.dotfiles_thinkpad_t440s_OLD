@@ -1,0 +1,94 @@
+
+use_xft yes
+xftfont Arimo:size=8
+xftalpha 0.7
+uppercase no
+
+update_interval 1.0
+update_interval_on_battery 2.5
+total_run_times 0
+double_buffer yes
+no_buffers no
+
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_colour black
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+alignment top_right
+minimum_size 250 5
+maximum_width 250
+gap_x 5
+gap_y 15
+
+draw_shades no
+draw_outline no
+draw_borders no
+
+cpu_avg_samples 1
+net_avg_samples 1
+
+TEXT
+${color F6B21C}${font Arimo:bold:size=8}SYSTEM ${hr 2}
+${color CCCDCF}${font Arimo:bold:size=7}Uptime: ${uptime_short} $alignr $kernel
+Battery Status:$alignr$battery_short
+${battery_bar 4,250}
+Time Remaining: $battery_time $alignr Mode: $laptop_mode
+
+${color F6B21C}${font Arimo:bold:size=8}PROCESSORS ${hr 2}
+${color CCCDCF}${font Arimo:bold:size=7}${cpugraph cpu0 20,250 c80003 c80003 -t}
+CPU 0: $alignr${cpu cpu1}% @ ${freq_g 1} GHz
+${cpubar cpu1 4,250}
+CPU 1: $alignr${cpu cpu2}% @ ${freq_g 2} GHz
+${cpubar cpu2 4,250}
+CPU 2: $alignr${cpu cpu3}% @ ${freq_g 3} GHz
+${cpubar cpu3 4,250}
+CPU 3: $alignr${cpu cpu4}% @ ${freq_g 4} GHz
+${cpubar cpu4 4,250}
+${font Arimo:bold:size=7}CORE 0 Temp: ${execi 10 sensors | grep "Core 0" | awk '{print $3}'}${alignr}CORE 1 Temp: ${execi 10 sensors | grep "Core 1" | awk '{print $3}'}
+
+${color F6B21C}${font Arimo:bold:size=8}MEMORY ${hr 2}
+${color CCCDCF}${font Arimo:bold:size=7}RAM: $alignc $mem / $memmax $alignr $memperc%
+${membar 4,250}
+${font Arimo:bold:size=7}Swap: $alignc $swap / $swapmax $alignr $swapperc%
+
+${color F6B21C}${font Arimo:bold:size=8}PARTITIONS ${hr 2}
+${color CCCDCF}${font Arimo:bold:size=7}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${fs_bar 4,250 /}
+/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
+${fs_bar 4,250 /home}
+/var $alignc ${fs_used /var} / ${fs_size /var} $alignr ${fs_used_perc /var}%
+/tmp $alignc ${fs_used /tmp} / ${fs_size /tmp} $alignr ${fs_used_perc /tmp}%
+${color CCCDCF}${diskiograph 20,250 ffbf00 ffbf00 -t}
+${font Arimo:bold:size=7}Disk Writes: ${goto 72}$diskio_write ${goto 152}Disk Reads: $alignr$diskio_read
+${font Arimo:bold:size=7}HDD Temp: $alignr+${hddtemp /dev/sdb}.0°C
+
+${color F6B21C}${font Arimo:bold:size=8}PROCESSES [${font Arimo:bold:size=8}PID::CPU%::MEM%${font Arimo:bold:size=8}]${hr 2}
+${color CCCDCF}${font Arimo:bold:size=7}${top name 1}${goto 98}${top pid 1}${goto 168}${top cpu 1}${goto 228}${top mem 1}
+${color #c4c4c4}${top name 2}${goto 98}${top pid 2}${goto 168}${top cpu 2}${goto 228}${top mem 2}
+${color #a3a3a3}${top name 3}${goto 98}${top pid 3}${goto 168}${top cpu 3}${goto 228}${top mem 3}
+${color #828282}${top name 4}${goto 98}${top pid 4}${goto 168}${top cpu 4}${goto 228}${top mem 4}
+${color #828282}${top name 5}${goto 98}${top pid 5}${goto 168}${top cpu 5}${goto 228}${top mem 5}
+${color CCCDCF}${loadgraph 20,250 0076c9 0076c9 -t}
+${font Arimo:bold:size=7}Total Processes: $processes  $alignr Running Processes: $running_processes
+${font Arimo:bold:size=7}Load Averages: $alignr$loadavg
+
+${color F6B21C}${font Arimo:bold:size=8}NETWORK ${hr 2}
+${color CCCDCF}${if_up wlp3s0}${font Arimo:bold:size=7}Wireless ESSID: ${alignr}${wireless_essid wlp3s0}
+LAN IP: ${addr wlp3s0} ${alignr} External IP: ${execi 600 curl -s mi-ip.net | grep '"ip"' | cut -f2 -d ">" | egrep -o '[0-9.]+'}
+WiFi Mode: ${wireless_mode wlp3s0} ${alignr} WiFi Bitrate: ${wireless_bitrate wlp3s0}
+WiFi Signal Strength: ${alignr}${wireless_link_qual_perc wlp3s0}%
+WiFi Signal Level: ${alignr}${execi 3 /home/srsantos/.conky/quality.sh}
+${downspeedgraph wlp3s0 20,125 00ff0f 00ff0f} $alignr${upspeedgraph wlp3s0 20,125 ffe702 ffe702}
+Download: ${goto 68}${downspeed wlp3s0}/sec ${goto 138}Upload: ${alignr}${upspeed wlp3s0}/sec
+Data RX total: ${totaldown wlp3s0} ${goto 138}Data TX total: ${alignr}${totalup wlp3s0}
+Inbound Streams: ${tcp_portmon 1 32767 count} ${goto 138}Outbound Streams: ${tcp_portmon 32768 61000 count} ${else}
+${if_up enp0s25}${font Arimo:bold:size=7}${alignc}Ethernet
+LAN: ${addr enp0s25} ${alignr} EXTERNAL: ${execi 600 curl -s mi-ip.net | grep '"ip"' | cut -f2 -d ">" | egrep -o '[0-9.]+'}
+${downspeedgraph enp0s25 20,125 00ff0f 00ff0f} $alignr${upspeedgraph enp0s25 20,125 ffe702 ffe702}
+Download: ${goto 68}${downspeed enp0s25}/sec ${goto 138}Upload: ${alignr}${upspeed enp0s25}/sec
+Data RX total: ${totaldown enp0s25} ${goto 138}Data TX total: ${alignr}${totalup enp0s25}
+Inbound Streams: ${tcp_portmon 1 32767 count} ${goto 138}Outbound Streams: ${tcp_portmon 32768 61000 count}
+${endif}${endif}
+${voffset 900}

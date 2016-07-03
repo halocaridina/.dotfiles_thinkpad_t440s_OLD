@@ -1,0 +1,38 @@
+xterm*dynamicColors: true
+
+xterm*background: #090C19
+xterm*foreground: gray
+xterm*cursorColor: gray
+
+! black/dark grey
+xterm*color0: #222946
+xterm*color8: #8C8B89
+
+! red/ bright red
+xterm*color1: #B32323
+xterm*color9: #DC2C2C
+
+! green/bright green
+xterm*color2: #1AAA13
+xterm*color10: #5DCE33
+
+! yellow/bright yellow
+xterm*color3: #FF9F3E
+xterm*color11: #E6CB29
+
+! blue/bright blue
+xterm*color4: #4957F3
+xterm*color12: #4D79FF
+
+! magenta/bright magenta
+xterm*color5: #BF3E94
+xterm*color13: #B641CC
+
+! cyan/bright cyan
+xterm*color6: #09A5B3
+xterm*color14: #3CB6F3
+
+! light grey/white
+xterm*color7: #AEAEAE
+xterm*color15: #DBDDE4
+

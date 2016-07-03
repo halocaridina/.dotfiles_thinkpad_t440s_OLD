@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+xmodmap "/home/srsantos/.Xmodmap"
+
+# Applications you want to run specifically with fluxbox.
+# Anything that should run in ANY X session should be in .xprofile
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# Start conky (compositing is started in .xprofile to "share" with awesome
+conky -q -d -c /home/srsantos/.config/conky/conky_fluxbox.conf &
+
+# Start security related aspects for locking down Fluxbox
+/usr/bin/xautolock -time 10 -locker sxlock -detectsleep &
+/usr/local/bin/xauto2suspend -time 20 -locker 'systemctl suspend' -detectsleep &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Start system tray related tools for Fluxbox
+(sleep 1 && nm-applet --sm-disable) &
+(sleep 1 && volumeicon) &
+(sleep 1 && parcellite) &
+(sleep 1 && cbatticon -u 20 -l 25 -r 18 -i notification -c "gxmessage -geometry 300x100 -center -file /home/srsantos/.config/cbatticon/batt_low.conf") &
+(sleep 1 && solaar) &
+(sleep 2 && ipager -c /home/srsantos/.config/ipager/ipager.conf) &
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec fluxbox
+# or if you want to keep a log:
+# exec fluxbox -log "/home/srsantos/.fluxbox/log"
+

@@ -1,0 +1,37 @@
+! jasonwryans colours
+
+!black
+XTerm*color0:  #333333
+XTerm*color8:  #3D3D3D
+!red
+XTerm*color1:  #8C4665
+XTerm*color9:  #BF4D80
+!green
+XTerm*color2:  #287373
+XTerm*color10: #53A6A6
+!yellow
+XTerm*color3:  #7C7C99
+XTerm*color11: #9E9ECB
+!blue
+XTerm*color4:  #395573
+XTerm*color12: #477AB3
+!magenta
+XTerm*color5:  #5E468C
+XTerm*color13: #7E62B3
+!cyan
+XTerm*color6:  #31658C
+XTerm*color14: #6096BF
+!white
+XTerm*color7:  #899CA1
+XTerm*color15: #C0C0C0
+
+XTerm.background: #101010
+XTerm.foreground: #999993
+!XTerm.cursorColor: #395573
+!XTerm.borderColor: #101010
+!XTerm.colorUL: #31658C
+!XTerm.borderless: false
+!XTerm.internalBorder: 3
+!XTerm.externalBorder: 3
+!XTerm.scrollBar: false
+

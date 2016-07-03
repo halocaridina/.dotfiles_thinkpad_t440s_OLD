@@ -1,0 +1,62 @@
+Host Server
+	Port 22
+	User srsantos
+	HostName 131.204.120.103
+	Compression yes
+	ServerAliveInterval 30
+	ServerAliveCountMax 120
+
+Host Intel_OSX_Office
+	Port 10022
+	User srsantos
+	HostName 131.204.120.166
+	Compression yes
+	ServerAliveInterval 30
+	ServerAliveCountMax 120
+
+Host AU_Gate
+    Port 22
+    User santosr
+    HostName gate.csm.auburn.edu
+    Compression yes
+    ServerAliveInterval 30
+    ServerAliveCountMax 120
+
+Host SkyNet
+	Port 22
+	User srsantos
+	HostName skynet.auburn.edu
+	Compression yes
+	ServerAliveInterval 30
+	ServerAliveCountMax 120
+
+Host Cyberdyne
+	Port 22
+	User srsantos
+	HostName cyberdyne.auburn.edu
+	Compression yes
+	ServerAliveInterval 30
+	ServerAliveCountMax 120
+
+Host UV_ASC
+	Port 22
+	User aubsrs
+	HostName uv.asc.edu
+	Compression yes
+	ServerAliveInterval 30
+	ServerAliveCountMax 120
+
+Host DMC_ASC
+	Port 22
+	User aubsrs
+	HostName dmc.asc.edu
+	Compression yes
+	ServerAliveInterval 30
+	ServerAliveCountMax 120
+
+Host ubuntu_server
+    ProxyCommand ssh -q AU_Gate nc -q0 131.204.120.103 22
+    
+Host office_intel
+    ProxyCommand ssh -q AU_Gate nc -q0 131.204.120.166 10022
+

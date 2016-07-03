@@ -1,0 +1,20 @@
+! Comma separated list of font names that are checked in order when trying to find glyphs for characters.
+
+URxvt*font: xft:PragmataPro:size=11, xft:PragmataPro\ for\ Powerline:size=11
+URxvt*boldFont: xft:PragmataPro:size=11:bold, xft:PragmataPro\ for\ Powerline:size=11:bold
+URxvt*italicFont: xft:PragmataPro:size=11:italic, xft:PragmataPro\ for\ Powerline:size=11:italic
+URxvt*boldItalicFont: xft:PragmataPro:size=11:bold:italic, xft:PragmataPro\ for\ Powerline:size=11:bold:italic
+URxvt*letterSpace: -1
+URxvt.lineSpace: -1
+
+!URxvt*font: -*-terminus-medium-*-*-*-14-*-*-*-*-*-iso10646-*, \
+!                xft:DejaVu Sans Mono:style=Book:pixelsize=14
+
+!URxvt*boldFont: -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-*, \
+!                xft:DejaVu Sans Mono:style=Bold:pixelsize=14
+
+!URxvt*italicFont: xft:Bitstream Vera Sans Mono:italic:autohint=true:pixelsize=14, \
+!                  xft:DejaVu Sans Mono:style=Italic:pixelsize=14
+
+!URxvt*boldItalicFont: xft:Bitstream Vera Sans Mono:bold:italic:autohint=true:pixelsize=14, \
+!                      xft:DejaVu Sans Mono:style=BoldItalic:pixelsize=14

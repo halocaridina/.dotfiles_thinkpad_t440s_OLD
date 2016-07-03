@@ -1,0 +1,26 @@
+[app] (name=Conky) (class=Conky)
+  [Hidden]	{yes}
+  [Alpha]	{210}
+[end]
+[app] (name=xterm) (class=XTerm)
+  [Dimensions]	{71% 68%}
+  [Alpha]	{180}
+[end]
+[app] (name=urxvt) (class=URxvt)
+  [Dimensions]	{71% 67%}
+[end]
+[app] (name=xterm) (class=UXTerm)
+  [Dimensions]	{40% 41%}
+[end]
+[app] (name=gvim) (class=Gvim)
+  [Dimensions]	{71% 66%}
+  [Maximized]	{no}
+  [Close]	{yes}
+[end]
+[app] (name=ipager) (class=IPager)
+  [Position]	(UPPERLEFT)	{0 874}
+  [Alpha]	{150}
+[end]
+[app] (name=.+)
+  [Position]	(CENTER)	{0 0}
+[end]

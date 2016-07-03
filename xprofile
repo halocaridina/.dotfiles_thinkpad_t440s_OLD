@@ -1,0 +1,19 @@
+# Start touchpad disable on typing, set cursor speed, uxrvtd, and compositing
+
+/usr/bin/setxkbmap -option caps:none
+
+/usr/bin/setxkbmap -option terminate:ctrl_alt_bksp
+
+/usr/bin/xset r rate 400 44
+
+/usr/bin/xset +fp /usr/share/fonts/local
+
+/usr/bin/xset m 5/2 10
+
+/usr/bin/xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.75
+
+/usr/bin/syndaemon -i 1.5 -d
+
+/usr/bin/urxvtd -q -f -o
+
+/usr/bin/compton --config /home/srsantos/.config/compton/compton.conf &

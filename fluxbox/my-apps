@@ -1,0 +1,34 @@
+[app] (name=Conky) (class=Conky)
+  [Hidden]	{yes}
+  [Alpha]	{210}
+[end]
+[app] (name=xterm) (class=XTerm)
+  [Dimensions]	{71% 68%}
+  [Alpha]	{180}
+[end]
+[app] (name=urxvt) (class=URxvt)
+  [Dimensions]	{71% 67%}
+[end]
+[app] (name=xterm) (class=UXTerm)
+  [Dimensions]	{40% 41%}
+[end]
+[app] (name=gvim) (class=Gvim)
+  [Dimensions]	{57% 63%}
+  [Maximized]	{no}
+[end]
+[app] (name=ipager) (class=IPager)
+  [Position]	(UPPERLEFT)	{0 874}
+  [Alpha]	{150}
+[end]
+[app] (name=parcellite) (class=Parcellite)
+  [Dimensions]	{15% 13%}
+  [Position]	(UPPERLEFT)	{40% 41%}
+[end]
+[app] (name=gxmessage) (class=Gxmessage)
+  [Dimensions]	{28% 37%}
+  [Position]	(UPPERLEFT)	{36% 33%}
+[end]
+[app] (name=xv) (class=mpv)
+  [Dimensions]	{28% 48%}
+  [Position]	(UPPERLEFT)	{1% 8%}
+[end]

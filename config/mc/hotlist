@@ -1,0 +1,5 @@
+ENTRY "Ubuntu Server" URL "/sh://srsantos@131.204.120.103/home/srsantos"
+ENTRY "Office Intel" URL "/sh://srsantos@131.204.120.166:10022/Users/srsantos/Desktop"
+ENTRY "CyberDyne" URL "/sh://srsantos@cyberdyne.auburn.edu/home/srsantos"
+ENTRY "SkyNet" URL "/sh://srsantos@skynet.auburn.edu/home/srsantos"
+ENTRY "ASC" URL "/sh://aubsrs@uv.asc.edu/home/aubsrs"

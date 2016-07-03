@@ -1,0 +1,93 @@
+alignment bottom_middle
+times_in_seconds yes
+format_human_readable yes
+use_xft yes
+xftfont Arimo:size=8
+xftalpha 1
+update_interval 1.0
+update_interval_on_battery 3.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour 110B00
+own_window_class Conky
+double_buffer yes
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color 444444
+default_shade_color 110B00
+default_outline_color 444444
+maximum_width 1980
+minimum_size 1802
+gap_x 0
+gap_y -8
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+if_up_strictness address
+override_utf8_locale yes
+color1 EEEEEE
+color2 222222 #DARKER COLOR IN LEFT OF CONKY GRAPHS AND PANEL BACKGROUND
+color3 FFFF19 #YELLOW
+color4 FF1919 #RED
+color5 110B00 #ORIGINAL BLACKISH COLOR FOR LUA PANEL BACKGROUND
+color6 444444 #LIGHTER COLOR IN RIGHT OF CONKY GRAPHS AND FOR BAR PLOTS
+default_bar_size 130 11
+border_width 0
+
+lua_load ~/.config/conky/draw_bg.lua
+lua_draw_hook_pre draw_bg
+
+##############################################
+#  Output for blue gradient = 222222 396EB4
+##############################################
+TEXT
+${goto 2}${cpugraph cpu1 11,130 222222 444444 -l}\
+${goto 141}${cpugraph cpu2 11,130 222222 444444 -l}\
+${goto 280}${cpugraph cpu3 11,130 222222 444444 -l}\
+${goto 420}${cpugraph cpu4 11,130 222222 444444 -l}\
+${goto 560}${loadgraph 11,130 222222 444444 -l}\
+${goto 700}${memgraph 11,130 222222 444444 -l}\
+${goto 840}${diskiograph 11,130 222222 444444 -l}\
+${goto 980}${color5}${color6}${fs_bar 11,130 /}\
+${goto 1120}${color5}${color6}${battery_bar 11,130 BAT1}\
+${goto 1260}${color5}${color6}${battery_bar 11,130 BAT0}\
+${goto 1400}${if_up wlp3s0}${color6}${upspeedgraph wlp3s0 11,130 222222 444444 -l}\
+${goto 1540}${downspeedgraph wlp3s0 11,130 222222 444444 -l}${endif}\
+${goto 1400}${if_up enp0s25}${upspeedgraph enp0s25 11,130 222222 444444 -l}\
+${goto 1540}${downspeedgraph enp0s25 11,130 222222 444444 -l}${endif}\
+${goto 1680}${if_up wlp3s0}${color5}${color6}${wireless_link_bar wlp3s0 11,130}${endif}\
+${goto 1680}${if_up enp0s25}${upspeedgraph enp0s25 11,130 222222 222222 -l}${endif}
+${voffset -12}${color2}${goto 5}${color1}${font FontAwesome:size=8}${font}: ${freq_g 1} GHz  ${if_match ${hwmon 2 temp 1 1.0 0.0}>55}${color4}${else}${color1}${endif}[${font fontello:size=9}${font}: ${hwmon 2 temp 1 1.0 0.0}°C]\
+${voffset -1}${color2}${goto 145}${color1}${font FontAwesome:size=8}${font}: ${freq_g 2} GHz  ${if_match ${hwmon 2 temp 1 1.0 0.0}>55}${color4}${else}${color1}${endif}[${font fontello:size=9}${font}: ${hwmon 2 temp 1 1.0 0.0}°C]\
+${voffset -1}${color2}${goto 285}${color1}${font FontAwesome:size=8}${font}: ${freq_g 3} GHz  ${if_match ${hwmon 2 temp 3 1.0 0.0}>55}${color4}${else}${color1}${endif}[${font fontello:size=9}${font}: ${hwmon 2 temp 3 1.0 0.0}°C]\
+${voffset -1}${color2}${goto 425}${color1}${font FontAwesome:size=8}${font}: ${freq_g 4} GHz  ${if_match ${hwmon 2 temp 3 1.0 0.0}>55}${color4}${else}${color1}${endif}[${font fontello:size=9}${font}: ${hwmon 2 temp 3 1.0 0.0}°C]\
+${voffset -1}${color2}${goto 565}${color1}${font FontAwesome:size=8}${font}: ${loadavg 1} ${loadavg 2}${goto 636}${if_match ${execpi 5 sensors | grep fan | awk '{print $2}'}>0}${color3}${else}${color1}${endif} [${font fontello:size=8}${font}:${voffset -1} ${execpi 5 sensors | grep fan | awk '{print $2}'}]\
+${voffset -1}${color2}${goto 705}${color1}${font fontello:size=8}${font}: ${mem}/${memmax}  [${memperc}%]\
+${voffset -1}${color2}${goto 845}${color1}${font FontAwesome:size=8}${font}: ${diskio_read sda}${goto 913}${font FontAwesome:size=8}${font}${voffset -1}: ${diskio_write sda}\
+${voffset -1}${color2}${goto 985}${color1}${font fontello:size=8}${font}: ${fs_used /root}/${fs_free /root}  [${fs_used_perc}%]\
+${color2}${if_match ${battery_percent BAT1}<=20}${goto 1126}${color4}${font fontello:size=9}${font}: ${battery_short BAT1}${goto 1195} ${format_time ${battery_time BAT1} "\hh:\mm"}\
+${else}\
+${color2}${if_match ${battery_percent BAT1}<=50}${goto 1126}${color3}${font fontello:size=9}${font}: ${battery_short BAT1}${goto 1195} ${format_time ${battery_time BAT1} "\hh:\mm"}\
+${else}\
+${color2}${if_match ${battery_percent BAT1}>=51}${goto 1126}${color1}${font fontello:size=9}${font}: ${battery_short BAT1}${goto 1195} ${format_time ${battery_time BAT1} "\hh:\mm"}\
+${else}\
+${endif}${endif}${endif}\
+${voffset -2}${color2}${if_match ${battery_percent BAT0}<=20}${goto 1266}${color4}${font FontAwesome:size=7}${font}: ${acpiacadapter}${goto 1335} ${format_time ${battery_time BAT0} "\hh:\mm"}\
+${else}\
+${color2}${if_match ${battery_percent BAT0}<=60}${goto 1266}${color3}${font FontAwesome:size=7}${font}: ${acpiacadapter}${goto 1335} ${format_time ${battery_time BAT0} "\hh:\mm"}\
+${else}\
+${color2}${if_match ${battery_percent BAT0}>=61}${goto 1266}${color1}${font FontAwesome:size=7}${font}: ${acpiacadapter}${goto 1335} ${format_time ${battery_time BAT0} "\hh:\mm"}\
+${else}\
+${endif}${endif}${endif}\
+${voffset -1}${if_up wlp3s0}${goto 1401}${color1}${font FontAwesome:size=8}${font}${voffset -1}: ${addr wlp3s0} ${goto 1500} ${wireless_link_qual_perc wlp3s0}%\
+${voffset -1}${color2}${goto 1541}${color1}${font FontAwesome:size=8}${font}: ${upspeedf wlp3s0}${goto 1583} ${voffset -1}${font FontAwesome:size=8}${font}: ${downspeedf wlp3s0}${goto 1630} ${voffset -1}${font FontAwesome:size=8}${font}: ${tcp_portmon 1 32767 count}:${tcp_portmon 32768 61000 count}\
+${voffset -1}${color2}${goto 1681}${color1}${font FontAwesome:size=8}${font}: ${wireless_essid wlp3s0}${goto 1766}${voffset -1}${wireless_bitrate wlp3s0}${endif}\
+${voffset -1}${if_up enp0s25}${goto 1405}${color1}${font FontAwesome:size=8}${font}: ${addr enp0s25}\
+${voffset -1}${color2}${goto 1541}${color1}${font FontAwesome:size=8}${font}: ${upspeedf enp0s25}${goto 1583} ${voffset -1}${font FontAwesome:size=8}${font}: ${downspeedf enp0s25}${goto 1630} ${voffset -1}${font FontAwesome:size=8}${font}: ${tcp_portmon 1 32767 count}:${tcp_portmon 32768 61000 count}\
+${voffset -1}${color2}${goto 1681}${color1}${font FontAwesome:size=8}${font}: ${totalup enp0s25} ${goto 1750}${voffset -1}${font FontAwesome:size=8}${font}: ${totaldown enp0s25}${endif}

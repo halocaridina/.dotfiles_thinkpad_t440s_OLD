@@ -1,0 +1,3 @@
+#[default]
+#vo=xv,opengl-old,
+#ao=alsa,

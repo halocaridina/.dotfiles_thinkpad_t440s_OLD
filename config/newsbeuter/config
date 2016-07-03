@@ -1,0 +1,55 @@
+auto-reload yes
+browser firefox
+cleanup-on-quit yes
+download-path "/home/srsantos/Music/Podcasts"
+feed-sort-order title-dec
+max-downloads 4
+notify-always yes
+notify-format "Newsbeuter: %n unread articles within %f unread feeds"
+notify-program notify-send
+player mpv
+refresh-on-startup yes
+reload-time 20
+reload-threads 2
+#show-read-articles no
+show-read-feeds no
+
+# hide articles matching: ---------------------------------------------
+
+ignore-article "*" "title =~ \"Sponsor\""
+ignore-article "*" "title =~ \"Advertisement\""
+ignore-mode "display"
+
+
+# formatting and colorization ------------------------------------------
+
+articlelist-format "%4i %f %D  %?T?|%-17T| ?%t"
+
+color listnormal color244 default
+color listnormal_unread color248 default
+color listfocus white color235
+color listfocus_unread white color235
+color article color248 default
+color info yellow default
+
+highlight article "^Feed: .*$" color3 default
+highlight article "^Title: .*$" color13 default bold
+highlight article "^Author: .*$" color5 default
+highlight article "^Link: .*$" color6 default
+highlight article "^Date: .*$" color4 default
+
+#color background   color229   default
+#color listnormal   color229   default
+#color listfocus    color229   color61 bold
+#color listnormal_unread color229   default
+#color listfocus_unread color229   color61 bold
+#color info         color247   color235
+#color article      color229   default
+
+# highlights
+#highlight article "^(Feed|Link):.*$" color46 default bold
+#highlight article "^(Title|Date|Author):.*$" color39 default bold
+#highlight article "https?://[^ ]+" color46 default underline
+#highlight article "\\[[0-9]+\\]" color63 default bold
+#highlight article "\\[image\\ [0-9]+\\]" color63 default bold
+#highlight feedlist "^─.*$" color61 color235 bold

@@ -1,0 +1,37 @@
+XTerm.intensityStyles: true
+! special
+XTerm*foreground:   #d2c5bc
+XTerm*background:   #101010
+XTerm*cursorColor:  #d2c5bc
+
+! black
+XTerm*color0:       #202020
+XTerm*color8:       #606060
+
+! red
+XTerm*color1:       #b91e2e
+XTerm*color9:       #d14548
+
+! green
+XTerm*color2:       #81957c
+XTerm*color10:      #a7b79a
+
+! yellow
+XTerm*color3:       #f9bb80
+XTerm*color11:      #fae3a0
+
+! blue
+XTerm*color4:       #356579
+XTerm*color12:      #7491a1
+
+! magenta
+XTerm*color5:       #2d2031
+XTerm*color13:      #87314e
+
+! cyan
+XTerm*color6:       #0b3452
+XTerm*color14:      #0f829d
+
+! white
+XTerm*color7:       #909090
+XTerm*color15:      #fff0f0

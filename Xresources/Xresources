@@ -1,0 +1,10 @@
+#include "/home/srsantos/.dotfiles/Xresources/xft.fonts"
+
+#include "/home/srsantos/.dotfiles/Xresources/XTerm_default.colors"
+#include "/home/srsantos/.dotfiles/Xresources/XTerm_default.settings"
+
+#include "/home/srsantos/.dotfiles/Xresources/URxvt_default.fonts"
+#include "/home/srsantos/.dotfiles/Xresources/URxvt_default.colors"
+#include "/home/srsantos/.dotfiles/Xresources/URxvt_default.settings"
+
+#include "/home/srsantos/.dotfiles/Xresources/rofi.config"
