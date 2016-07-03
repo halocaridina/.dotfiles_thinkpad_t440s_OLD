@@ -1,7 +1,7 @@
 
 #!/bin/bash
 
-LOCWEATHER="`weather-report 36830 | grep -E '(Current|Temperature|Sky)' | sed 's/^   //;s/Current conditions at//;s/Temperature:/-/;s/Sky conditions:/-/' | xargs`"
+LOCWEATHER="`weather-report 36830 | grep -E '(Current|Temperature|Sky)' | sed 's/^   //;s/Current conditions at//;s/Temperature:/-/;s/Sky conditions:/-/;s/ C/°C/;s/ F/°F/' | xargs`"
 
 if ! [ "`ping -c 1 google.com`" ]; then
     echo ": N/A"
