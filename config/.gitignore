@@ -1,7 +1,11 @@
+dconf/user
 google-chrome/
+google-chrome
 gconf/
 icedtea-web/
 libreoffice/
 sublime-text-3/
 systemd/
 pulse/
+google-chrome-back-ovfs/
+google-chrome-backup/
