@@ -5,11 +5,11 @@ res=$(rofi -color-enabled "true" -color-window "#222222,#396EB4" -color-urgent "
 if [[ $res = "LOCK SCREEN" ]]; then
     xset dpms force off
 fi
-if [[ $res = "SUSPEND TO RAM" ]]; then
-    systemctl suspend
-fi
 if [[ $res = "LOGOUT TO TTY" ]]; then
     pkill -f xss-lock && pkill -f nm-applet && pkill -f parcellite && pkill -f pasystray && i3-msg exit
+fi
+if [[ $res = "SUSPEND TO RAM" ]]; then
+    systemctl suspend
 fi
 if [[ $res = "REBOOT" ]]; then
     systemctl reboot
