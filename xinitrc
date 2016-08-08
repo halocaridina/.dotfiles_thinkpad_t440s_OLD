@@ -27,10 +27,9 @@ fi
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-exec i3
-
-#case $WM in
-#i3)
+# Start WM of choice by adding options similar to below
+case $WM in
+i3)
 	/usr/bin/i3 -c /home/srsantos/.config/i3/bling.conf
 	;;
 #i3-bones)
@@ -43,6 +42,6 @@ exec i3
 #	/usr/bin/herbstluftwm --locked
 #	;;
 *)
-#	/usr/bin/i3 -c /home/srsantos/.config/i3/bling.conf
-#	;;
-#esac
+	/usr/bin/i3 -c /home/srsantos/.config/i3/bling.conf
+	;;
+esac

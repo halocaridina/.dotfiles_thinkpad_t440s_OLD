@@ -78,3 +78,10 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+# Test to switch to simple prompt when it TTY
+if [ $TERM = "linux" ]; then
+      # simple prompt when in TTY
+    PROMPT='%B%t%b %n@%m:%0~ $ '
+fi
+
