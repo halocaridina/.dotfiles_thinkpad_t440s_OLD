@@ -10,10 +10,4 @@
 
 /usr/bin/xset m 5/2 10
 
-/usr/bin/xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.75
-
-/usr/bin/syndaemon -i 1.5 -d
-
-/usr/bin/urxvtd -q -f -o
-
-/usr/bin/compton --config /home/srsantos/.config/compton/compton.conf &
+/usr/bin/compton --config /home/srsantos/.config/compton/compton.conf &>/dev/null &

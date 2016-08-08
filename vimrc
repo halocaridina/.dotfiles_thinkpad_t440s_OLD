@@ -34,7 +34,9 @@ Plugin 'SearchComplete'
 
 Plugin 'PotatoesMaster/i3-vim-syntax'
 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+
+Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'smancill/conky-syntax.vim'
 

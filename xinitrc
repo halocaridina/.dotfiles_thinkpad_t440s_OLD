@@ -23,7 +23,26 @@ fi
 [ -f /etc/xprofile ] && source /etc/xprofile
 [ -f ~/.xprofile ] && source ~/.xprofile
 
-# exec gnome-session
-# exec startkde
-# exec startxfce4
-# ...or the Window Manager of your choice
+# Start gnome-keyring-daemon
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
+exec i3
+
+#case $WM in
+#i3)
+	/usr/bin/i3 -c /home/srsantos/.config/i3/bling.conf
+	;;
+#i3-bones)
+#	/usr/bin/i3 -c /home/srsantos/.i3/bones.conf
+#	;;
+#i3-debug)
+#	/usr/bin/i3 -c /home/srsantos/.i3/bling.conf -V >> /tmp/i3log-$(date +'%F-%k-%M-%S') 2>&1
+#	;;
+#herb)
+#	/usr/bin/herbstluftwm --locked
+#	;;
+*)
+#	/usr/bin/i3 -c /home/srsantos/.config/i3/bling.conf
+#	;;
+#esac

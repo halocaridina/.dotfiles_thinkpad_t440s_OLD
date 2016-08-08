@@ -4,7 +4,7 @@
 
 /usr/bin/pkill -f parcellite >/dev/null 2>&1
 
-/usr/bin/pkill -f caffeine >/dev/null 2>&1
+#/usr/bin/pkill -f caffeine >/dev/null 2>&1
 
 /usr/bin/pkill -f pasystray >/dev/null 2>&1
 
@@ -14,7 +14,7 @@
 
 /usr/bin/pasystray &
 
-/usr/bin/caffeine &
+#/usr/bin/caffeine &
 
 /usr/bin/parcellite &
 

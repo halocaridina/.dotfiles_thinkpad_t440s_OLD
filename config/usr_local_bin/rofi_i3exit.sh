@@ -8,7 +8,7 @@ fi
 if [[ $res = "SUSPEND TO RAM" ]]; then
     systemctl suspend
 fi
-if [[ $res = "LOGOUT TO GREETER" ]]; then
+if [[ $res = "LOGOUT TO TTY" ]]; then
     pkill -f xss-lock && pkill -f nm-applet && pkill -f parcellite && pkill -f pasystray && i3-msg exit
 fi
 if [[ $res = "REBOOT" ]]; then
