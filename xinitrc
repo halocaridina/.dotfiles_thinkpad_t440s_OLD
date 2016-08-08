@@ -30,7 +30,7 @@ export SSH_AUTH_SOCK
 # Start WM of choice by adding options similar to below
 case $WM in
 i3)
-	/usr/bin/i3 -c /home/srsantos/.config/i3/bling.conf
+	/usr/bin/i3
 	;;
 #i3-bones)
 #	/usr/bin/i3 -c /home/srsantos/.i3/bones.conf
@@ -42,6 +42,7 @@ i3)
 #	/usr/bin/herbstluftwm --locked
 #	;;
 *)
-	/usr/bin/i3 -c /home/srsantos/.config/i3/bling.conf
+	/usr/bin/i3
 	;;
 esac
+
