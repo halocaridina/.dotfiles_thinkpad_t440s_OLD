@@ -213,8 +213,8 @@ bindsym $mod+m mode "move" focus floating
 bindsym XF86AudioRaiseVolume exec --no-startup-id sh /usr/local/bin/volume_notification.sh up && /usr/bin/paplay /usr/share/sounds/Borealis/Volume.aiff
 bindsym XF86AudioLowerVolume exec --no-startup-id sh /usr/local/bin/volume_notification.sh down && /usr/bin/paplay /usr/share/sounds/Borealis/Volume.aiff
 bindsym XF86AudioMute exec --no-startup-id sh /usr/local/bin/volume_notification.sh mute && /usr/bin/paplay /usr/share/sounds/Borealis/Volume.aiff
-bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/xbacklight -inc 7.5 && /usr/bin/volnoti-brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/xbacklight -dec 7.5 && /usr/bin/volnoti-brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/light -A 7.5 && /usr/bin/volnoti-brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/light -U 7.5 && /usr/bin/volnoti-brightness
 bindsym XF86Display exec --no-startup-id /usr/bin/arandr
 bindsym XF86AudioMicMute exec --no-startup-id /usr/local/bin/microphone_toggle.sh
 bindsym XF86Tools exec --no-startup-id /usr/local/bin/touchpad_toggle.sh
