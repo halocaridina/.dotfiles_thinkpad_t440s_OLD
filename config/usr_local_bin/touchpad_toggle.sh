@@ -1,18 +1,21 @@
-#!/bin/bash
-#
-# This script will toggle the functionality of your Synaptics touchpad,
-# restarting syndaemon as needed, and send a desktop notification event
-# for some visual feedback. It is even more useful when run via a custom
-# keyboard binding.
-idle_time=1.5 # seconds
-killall syndaemon
-state=`synclient -l | grep TouchpadOff | sed 's/^.*= //'`
-if [ $state -eq 1 ]
+#!/usr/bin/env bash
+# This script will toggle the functionality of the Synaptics touchpad
+
+declare -i ID
+ID=`/usr/bin/xinput list | /usr/bin/grep -Eio 'touchpad\s*id\=[0-9]{1,2}' | /usr/bin/grep -Eo '[0-9]{1,2}'`
+declare -i STATE
+STATE=`/usr/bin/xinput list-props $ID | /usr/bin/grep 'Device Enabled' | /usr/bin/awk '{print $4}'`
+
+if [ $STATE -eq 0 ]
 then
-/usr/bin/volnoti-show -m -n -s /usr/share/pixmaps/volnoti-media/touchpad_icon.svg
-/usr/bin/synclient TouchpadOff=0
-/usr/bin/syndaemon -i $idle_time -d
+    /usr/bin/rm -f /tmp/touchpad_toggled.*
+    /usr/bin/xinput enable $ID
+    /usr/bin/volnoti-show -m -n -s /usr/share/pixmaps/volnoti-media/touchpad_icon.svg
 else
-/usr/bin/volnoti-show -m -n -s /usr/share/pixmaps/volnoti-media/touchpad_disable_icon.svg
-/usr/bin/synclient TouchpadOff=1
+    /usr/bin/rm -f /tmp/touchpad_toggled.*
+    /usr/bin/xinput enable $ID
+    /usr/bin/touch /tmp/touchpad_toggled.pid && /usr/bin/echo "1" > /tmp/touchpad_toggled.lock
+    /usr/bin/chown srsantos:srsantos /tmp/touchpad_toggled.*
+    /usr/bin/xinput disable $ID
+    /usr/bin/volnoti-show -m -n -s /usr/share/pixmaps/volnoti-media/touchpad_disable_icon.svg
 fi
