@@ -300,6 +300,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id /usr/bin/setroot -fw /home/srsantos/.config/i3/Paradox.png
 exec --no-startup-id /usr/bin/xss-lock -- i3lock -b -i /home/srsantos/.config/i3/metal_grid_w_arch.png &
 exec --no-startup-id /usr/bin/conky -c /home/srsantos/.config/conky/bar_conkyrc >/dev/null 2>&1 &
+exec --no-startup-id /usr/bin/solaar >/dev/null 2>&1 &
 exec --no-startup-id /usr/bin/pasystray
 exec --no-startup-id /usr/bin/parcellite
 exec --no-startup-id /usr/bin/volnoti &

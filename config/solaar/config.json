@@ -4,5 +4,10 @@
     "side-scroll": true,
     "smooth-scroll": false
   },
+  "1025:16DB0560": {
+    "_name": "Wireless Mouse M510",
+    "side-scroll": true,
+    "smooth-scroll": true
+  },
   "_version": "0.9.2"
 }
