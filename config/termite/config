@@ -1,19 +1,19 @@
+
 [options]
 resize_grip = false
 scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = true
-visible_bell = false
+visible_bell = true
 mouse_autohide = true
 allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
-clickable_url = true
+clickable_url = false
 font = PragmataPro 10.5
-#font = Fantasque Sans Mono 11
 scrollback_lines = 65535
 search_wrap = true
-#icon_name = terminal
+icon_name = terminal
 #geometry = 640x480
 
 # 0.0: opaque, 1.0: transparent
@@ -27,18 +27,18 @@ cursor_blink = on
 cursor_shape = ibeam
 
 # $BROWSER is used by default
-browser = firefox
+browser = xombrero
 
 # word characters used for word selection
 # (default if unset: all graphic non-punctuation/space characters)
 #word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
 [colors]
-# special Tango from terminal.sexy
+# Tango from terminal.sexy
 foreground      = #babdb6
 foreground_bold = #babdb6
 cursor          = #babdb6
-background = rgba(0, 0, 0, 0.90)
+background = rgba(0, 0, 0, 0.80)
 
 # black
 color0  = #2e3436
@@ -72,7 +72,10 @@ color14 = #34e2e2
 color7  = #d3d7cf
 color15 = #eeeeec
 
+######################################
 
+#[colors]
+# SRS defaults from Lenovo Thinkpad
 #foreground = lightgray
 #foreground_bold = white
 #foreground_dim = #888888

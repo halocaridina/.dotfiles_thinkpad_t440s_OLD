@@ -9,7 +9,7 @@ Host Server
 Host Intel_OSX_Office
 	Port 10022
 	User srsantos
-	HostName 131.204.120.166
+	HostName 131.204.120.72
 	Compression yes
 	ServerAliveInterval 30
 	ServerAliveCountMax 120
@@ -58,5 +58,5 @@ Host ubuntu_server
     ProxyCommand ssh -q AU_Gate nc -q0 131.204.120.103 22
     
 Host office_intel
-    ProxyCommand ssh -q AU_Gate nc -q0 131.204.120.166 10022
+    ProxyCommand ssh -q AU_Gate nc -q0 131.204.120.72 10022
 

@@ -24,7 +24,7 @@ fi
 [ -f ~/.xprofile ] && source ~/.xprofile
 
 # Start gnome-keyring-daemon
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
 export SSH_AUTH_SOCK
 
 # Start WM of choice by adding options similar to below

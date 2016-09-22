@@ -207,6 +207,22 @@ export LESS='eMq'
 export EDITOR='vim'
 export LANG='en_US.UTF-8'
 
+##################################################################################
+
+# Set SSH to use gpg-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+fi
+
+# Set GPG TTY
+export GPG_TTY=$(tty)
+
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
+###################################################################################
+
 #### USEFUL TIDBITS ####
 ## awk '{for(i=1;i<=NF;i++)if(arr[i] ~ /./)arr[i]=arr[i]"\n"$i;else arr[i]=$i}END{for(x=1;x<=length(arr);x++)printf("%s\n",arr[x])}'
 ## to remove empty FASTA entries: awk '$2{print RS $0}' FS='\n' RS=\> ORS=

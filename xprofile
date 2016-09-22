@@ -1,4 +1,4 @@
-# Start touchpad disable on typing, set cursor speed, uxrvtd, and compositing
+# Start touchpad disable on typing, set cursor speed, and uxrvtd
 
 /usr/bin/setxkbmap -option caps:none
 
@@ -9,5 +9,3 @@
 /usr/bin/xset +fp /usr/share/fonts/local
 
 /usr/bin/xset m 5/2 10
-
-/usr/bin/compton --config /home/srsantos/.config/compton/compton.conf &>/dev/null &

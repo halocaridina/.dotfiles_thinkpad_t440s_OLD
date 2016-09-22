@@ -103,16 +103,18 @@ bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+# add small gaps between windows and outer border
+gaps inner 4
+gaps outer 0
+smart_gaps on
 
 # switch to workspace
 bindsym $mod+1 workspace 1: 
@@ -123,7 +125,7 @@ bindsym $mod+5 workspace 5:
 bindsym $mod+6 workspace 6: 
 bindsym $mod+7 workspace 7: 
 bindsym $mod+8 workspace 8: 
-bindsym $mod+9 workspace 9:
+bindsym $mod+9 workspace 9: 
 bindsym $mod+0 workspace 10:
 
 # move focused container to workspace
@@ -135,24 +137,15 @@ bindsym $mod+Shift+5 move container to workspace 5:
 bindsym $mod+Shift+6 move container to workspace 6: 
 bindsym $mod+Shift+7 move container to workspace 7: 
 bindsym $mod+Shift+8 move container to workspace 8: 
-bindsym $mod+Shift+9 move container to workspace 9:
+bindsym $mod+Shift+9 move container to workspace 9: 
 bindsym $mod+Shift+0 move container to workspace 10:
 
-assign [class="subl3"] 2:
-assign [class="Subl3"] 2:
-assign [class="Gvim"] 2:
-assign [class="gvim"] 2:
-assign [title="Gvim"] 2:
-assign [title="gvim"] 2:
-assign [class="libreoffice"] 2:
-assign [class="LibreOffice"] 2:
-assign [class="libreoffice"] 2:
-assign [class="LibreOffice"] 2:
-assign [title="mc"] 3:
 assign [class="Firefox"] 6: 
-assign [class="Google-chrome-stable"] 6: 
+assign [class="inox"] 6: 
 assign [class="mutt"] 7: 
 assign [title="ssh"] 8: 
+assign [class="libreoffice"] 9: 
+assign [class="LibreOffice"] 9: 
 
 # handle popups
 popup_during_fullscreen smart
@@ -210,17 +203,17 @@ mode "move" {
 bindsym $mod+m mode "move" focus floating
 
 # Bindings for hotkeys and notifications
-bindsym XF86AudioRaiseVolume exec --no-startup-id sh /usr/local/bin/volume_notification.sh up && /usr/bin/paplay /usr/share/sounds/Borealis/Volume.aiff
-bindsym XF86AudioLowerVolume exec --no-startup-id sh /usr/local/bin/volume_notification.sh down && /usr/bin/paplay /usr/share/sounds/Borealis/Volume.aiff
-bindsym XF86AudioMute exec --no-startup-id sh /usr/local/bin/volume_notification.sh mute && /usr/bin/paplay /usr/share/sounds/Borealis/Volume.aiff
-bindsym XF86MonBrightnessUp exec --no-startup-id /usr/bin/light -A 7.5 && /usr/bin/volnoti-brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id /usr/bin/light -U 7.5 && /usr/bin/volnoti-brightness
+bindsym XF86AudioRaiseVolume exec --no-startup-id /usr/bin/pulseaudio-ctl up
+bindsym XF86AudioLowerVolume exec --no-startup-id /usr/bin/pulseaudio-ctl down
+bindsym XF86AudioMute exec --no-startup-id /usr/bin/pulseaudio-ctl mute
+bindsym XF86MonBrightnessUp exec --no-startup-id /usr/local/bin/brightness_indicator.sh up
+bindsym XF86MonBrightnessDown exec --no-startup-id /usr/local/bin/brightness_indicator.sh down
 bindsym XF86Display exec --no-startup-id /usr/bin/arandr
 bindsym XF86AudioMicMute exec --no-startup-id /usr/local/bin/microphone_toggle.sh
 bindsym XF86Tools exec --no-startup-id /usr/local/bin/touchpad_toggle.sh
 bindsym XF86Search exec --no-startup-id /usr/bin/urxvt -depth 0 -geometry 190x44 -name glances -e glances -1
-bindsym XF86Explorer scratchpad show
-bindsym XF86LaunchA move scratchpad
+# bindsym XF86Explorer scratchpad show
+# bindsym XF86LaunchA move scratchpad
 
 # scratchpad
 bindsym $mod+Control+Down move scratchpad
@@ -262,6 +255,43 @@ for_window [title="glances"] border normal
 for_window [title="glances"] floating enable
 for_window [title="glances"] move position center
 
+# open sys-info as floating window with border
+for_window [title="inxi-sys-info"] border 1pixel
+for_window [title="inxi-sys-info"] floating enable
+for_window [title="inxi-sys-info"] move position center
+
+# open VNC Viewer as floating window with border
+for_window [title="VNC Viewer: Connection Details"] border normal
+for_window [title="VNC Viewer: Connection Details"] floating enable
+for_window [title="VNC Viewer: Connection Details"] move position center
+
+# open solaar as floating window with border
+for_window [class="Solaar"] border normal
+for_window [class="Solaar"] floating enable
+for_window [class="Solaar"] move position center
+
+# open NM editor as floating window with border
+for_window [class="Network Connections"] border normal
+for_window [class="Network Connections"] floating enable
+for_window [class="Network Connections"] move position center
+for_window [class="Nm-connection-editor"] border normal, floating enable, move position center
+
+# attempt to open dialogs in center of screen
+for_window [title="Open File"] border normal
+for_window [title="Open File"] floating enable
+for_window [title="Open File"] move position center
+
+for_window [window_type="dialog"] border normal
+for_window [window_type="dialog"] floating enable
+for_window [window_type="dialog"] move position center
+
+for_window [title="Open File"] floating enable, move left 120px, move up 140px, move position center
+for_window [window_type="dialog"] floating enable, move left 120px, move up 140px, move position center
+
+# center gtk dialog boxes into middle of the screen
+for_window [window_role="GtkFileChooserDialog"] floating enable, move left 120px, move up 140px, move position center
+for_window [class="Gpicview" window_role="GtkFileChooserDialog"] floating enable, move left 120px, move up 140px, move position center
+
 # $i3-theme-window
 # dwm colorscheme
 # <clientclass>          <border>  <bg>  <text> <indicator>
@@ -275,6 +305,7 @@ bar {
     font              pango:FontAwesome, Arimo 9
     status_command    python /home/srsantos/.config/i3/i3pystatus/i3pystatus.conf
     position          top
+    height            20
     workspace_buttons yes
 
 colors {
@@ -295,15 +326,14 @@ colors {
 }
 
 # START STUFF FOR THE DESKTOP
+exec --no-startup-id /usr/bin/compton --config /home/srsantos/.config/compton/compton.conf &>/dev/null &
 exec --no-startup-id /usr/bin/paplay /usr/share/sounds/Feather/opening.wav &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id /usr/bin/setroot -fw /home/srsantos/.config/i3/Paradox.png
-exec --no-startup-id /usr/bin/xss-lock -- i3lock -b -i /home/srsantos/.config/i3/metal_grid_w_arch.png &
+exec --no-startup-id /usr/bin/setroot -s /home/srsantos/.config/i3/wallpapers/dark-metal-grid-8.png
+exec --no-startup-id /usr/bin/xss-lock -- i3lock -b -i /home/srsantos/.config/i3/wallpapers/metal_grid_w_arch.png &
 exec --no-startup-id /usr/bin/conky -c /home/srsantos/.config/conky/bar_conkyrc >/dev/null 2>&1 &
 exec --no-startup-id /usr/bin/solaar >/dev/null 2>&1 &
 exec --no-startup-id /usr/bin/pasystray
-exec --no-startup-id /usr/bin/parcellite
-exec --no-startup-id /usr/bin/volnoti &
 exec --no-startup-id /usr/bin/nm-applet
 
 # vim:filetype=i3

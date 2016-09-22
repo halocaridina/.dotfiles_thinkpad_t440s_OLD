@@ -1,70 +1,30 @@
-# For the benefit of emacs users: -*- shell-script -*-
-###########################
-# xbindkeys configuration #
-###########################
-#
-# Version: 1.8.6
-#
-# If you edit this file, do not forget to uncomment any lines
-# that you change.
-# The pound(#) symbol may be used anywhere for comments.
-#
-# To specify a key, you can use 'xbindkeys --key' or
-# 'xbindkeys --multikey' and put one of the two lines in this file.
-#
-# The format of a command line is:
-#    "command to start"
-#       associated key
-#
-#
-# A list of keys is in /usr/include/X11/keysym.h and in
-# /usr/include/X11/keysymdef.h
-# The XK_ is not needed.
-#
-# List of modifier:
-#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
-#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
-#
+######################
+# MX Master Settings #
+######################
 
-# The release modifier is not a standard X modifier, but you can
-# use it if you want to catch release events instead of press events
+# thumb wheel up => change browser tab to right
+"xte 'keydown Control_L' 'key Right' 'keyup Control_L'"
+    b:6
 
-# By defaults, xbindkeys does not pay attention with the modifiers
-# NumLock, CapsLock and ScrollLock.
-# Uncomment the lines above if you want to pay attention to them.
+# thumb wheel down => change browser tab to left
+"xte 'keydown Control_L' 'key Left' 'keyup Control_L'"
+    b:7
 
-#keystate_numlock = enable
-#keystate_capslock = enable
-#keystate_scrolllock= enable
+# backward button => previous i3 workspace
+"xte 'keydown Super_L' 'key comma' 'keyup Super_L'"
+   b:8
 
-# Examples of commands:
+# forward button => next i3 workspace
+"xte 'keydown Super_L' 'key period' 'keyup Super_L'"
+   b:9
 
-"xbindkeys_show" 
-  control+shift + q
+# thumb button => jump to urgent i3 workspace
+# We need a sleep here since the button triggers a few more key codes (wtf?).
+# It also triggers Control+Mod2+Control_L and Alt+Mod2+Alt_L. The sleep
+# prevents that X receives those keypresses simultaniously. Therefore they
+# might interfere and trigger unwanted actions. By the sleep we make sure that
+# the Alt+Left is receive as distinct event.
 
-# set directly keycode (here control + f with my keyboard)
-"xterm"
-  c:41 + m:0x4
+"sleep 0.1 && xte 'keydown Super_L' 'key x' 'keyup Super_L'"
+   Control+Alt+Mod2 + Tab
 
-# specify a mouse button
-"xterm"
-  control + b:2
-
-#"xterm -geom 50x20+20+20"
-#   Shift+Mod2+alt + s
-#
-## set directly keycode (here control+alt+mod2 + f with my keyboard)
-#"xterm"
-#  alt + c:0x29 + m:4 + mod2
-#
-## Control+Shift+a  release event starts rxvt
-#"rxvt"
-#  release+control+shift + a
-#
-## Control + mouse button 2 release event starts rxvt
-#"rxvt"
-#  Control + b:2 + Release
-
-##################################
-# End of xbindkeys configuration #
-##################################
